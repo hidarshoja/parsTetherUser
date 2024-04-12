@@ -1,0 +1,21 @@
+/* @font-face {
+  font-family: "vazir";
+  src: url("/font/Vazirmatn-Medium.ttf");
+} */
+@font-face {
+  font-family: "vazir";
+  src: url("/font/IRANSans/IRANSansWeb.ttf");
+}
+
+*{
+  font-family: "vazir";
+}
+
+body{
+  direction: rtl ;
+  background-color: #FBFAF6;
+}
+.active{
+  @apply  text-green-600 !important;
+
+}

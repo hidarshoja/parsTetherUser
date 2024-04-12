@@ -1,0 +1,15 @@
+<svg id="noun-question-1583014" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #00df9a;
+      }
+    </style>
+  </defs>
+  <circle id="Ellipse_143" data-name="Ellipse 143" class="cls-1" cx="12" cy="12" r="12" transform="translate(0)"/>
+  <path id="Path_3364" data-name="Path 3364" class="cls-2" d="M95.223,13.223a12,12,0,1,0,6,1.608A12,12,0,0,0,95.223,13.223Zm0,4.217a1.567,1.567,0,1,1-1.108.459A1.567,1.567,0,0,1,95.223,17.44Zm0,5.093a1.485,1.485,0,0,1,1.488,1.488v7.5a1.488,1.488,0,1,1-2.975,0v-7.5A1.485,1.485,0,0,1,95.223,22.533Z" transform="translate(-83.223 -13.223)"/>
+</svg>
