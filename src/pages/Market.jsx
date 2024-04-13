@@ -1,44 +1,69 @@
-import  { useState } from "react";
+import { useState, useEffect } from "react";
+const people = [
+  {
+    id: 1,
+    name: "بیت کویین",
+    price: [100, 110, 900, 200, 300, 100],
+    role: "10",
+    image: "/img/BTC.png",
+    inventory: 1500000,
+  },
+  {
+    id: 2,
+    name: "دوج",
+    price: [100, 900, 910, 200, 400, 300],
+    role: "1",
+    image: "/img/DOGE.png",
+    inventory: 0,
+  },
+  {
+    id: 3,
+    name: "باینس",
+    price: [100, 110, 900, 200, 300, 120],
+    role: "1",
+    image: "/img/BNB.png",
+    inventory: 4500000,
+  },
+  // More people...
+];
 
 export default function Market() {
   const [showSecondDiv, setShowSecondDiv] = useState(false);
   const [selectedPersonName, setSelectedPersonName] = useState("");
   const [selectedPersonPrice, setSelectedPersonPrice] = useState("");
   const [selectedPersonImg, setSelectedPersonImg] = useState("");
+  const [updatedPeople, setUpdatedPeople] = useState(people);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const people = [
-    {
-      id: 1,
-      name: "بیت کویین",
-      price: 1000000,
-      role: "10",
-      image: "/img/BTC.png",
-      inventory :1500000
-    },
-    {
-      id: 2,
-      name: "دوج",
-      price: 300000,
-      role: "1",
-      image: "/img/DOGE.png",
-      inventory :0
-    },
-    {
-      id: 3,
-      name: "باینس",
-      price: 370000,
-      role: "1",
-      image: "/img/BNB.png",
-      inventory :4500000
-    },
-    // More people...
-  ];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setUpdatedPeople((prevPeople) => {
+        const updatedPrices = prevPeople.map((person, index) => {
+          if (index === currentIndex) {
+            const randomChange = Math.floor(Math.random() * 201) - 100; // Generate random change (-100 to 100)
+            const newPrice =
+              person.price[person.price.length - 1] + randomChange;
+            return {
+              ...person,
+              price: [...person.price.slice(1), newPrice], // Update the last price in the array
+            };
+          }
+          return person;
+        });
 
-  const handleTransactionClick = (personName , personInventory , personImg) => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % prevPeople.length);
+        return updatedPrices;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
+  const handleTransactionClick = (personName, personInventory, personImg) => {
     setShowSecondDiv(true);
     setSelectedPersonName(personName);
-    setSelectedPersonPrice(personInventory)
-    setSelectedPersonImg(personImg)
+    setSelectedPersonPrice(personInventory);
+    setSelectedPersonImg(personImg);
   };
 
   return (
@@ -84,28 +109,44 @@ export default function Market() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {people.map((person) => (
+                  {updatedPeople.map((person) => (
                     <tr key={person.id}>
                       <td className="whitespace-nowrap flex items-center justify-center py-2 text-center   text-sm text-gray-500">
-                        <div className="flex items-center">
-                          <div className="h-11 w-11 flex-shrink-0">
+                        <div className="flex flex-col items-center justify-center w-10">
+                          <div className="h-8 w-8 flex-shrink-0">
                             <img
-                              className="h-11 w-11 rounded-full"
+                              className="h-8 w-8 rounded-full"
                               src={person.image}
                               alt=""
                             />
                           </div>
-                          <div className="mr-4">
+                          <div className="">
                             <div className="font-medium text-gray-900">
                               {person.name}
                             </div>
                           </div>
                         </div>
                       </td>
-                      <td className="whitespace-nowrap  text-center   text-sm text-gray-500">
-                        <div className="text-gray-900">
-                          {new Intl.NumberFormat("fa-IR").format(person.price)}
-                        </div>
+
+                      <td className="whitespace-nowrap text-center text-sm text-gray-500">
+                        <span
+                          className={`${
+                            person.price[person.price.length - 1] >
+                            person.price[person.price.length - 2]
+                              ? "text-green-700"
+                              : "text-red-700"
+                          }`}
+                        >
+                          {new Intl.NumberFormat("fa-IR").format(
+                            person.price[person.price.length - 1]
+                          )}{" "}
+                          <span>
+                            {person.price[person.price.length - 1] >
+                            person.price[person.price.length - 2]
+                              ? "+"
+                              : "-"}
+                          </span>
+                        </span>
                       </td>
 
                       <td className="whitespace-nowrap  text-center  text-sm text-gray-500">
@@ -113,8 +154,19 @@ export default function Market() {
                       </td>
                       <td className="whitespace-nowrap  text-center  text-sm text-gray-500">
                         <span
-                          onClick={() => handleTransactionClick(person.name , person.inventory , person.image)}
-                          className="inline-flex items-center rounded-md bg-green-50 px-3 py-1  text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20 cursor-pointer"
+                          onClick={() =>
+                            handleTransactionClick(
+                              person.name,
+                              person.inventory,
+                              person.image
+                            )
+                          }
+                          className={`inline-flex items-center rounded-md px-3 py-1 text-xs font-medium ${
+                            person.price[person.price.length - 1] >
+                            person.price[person.price.length - 2]
+                              ? "bg-green-50 text-green-500"
+                              : "bg-red-50 text-red-500"
+                          }`}
                         >
                           معامله
                         </span>
@@ -136,9 +188,11 @@ export default function Market() {
           <div className="w-full py-2 text-color4 text-lg font-semibold flex items-center justify-between border-b border-gray-600">
             <div className="w-1/3 flex items-center justify-center">خرید</div>
             <div className="w-1/3 flex items-center justify-center">
-                <img src={selectedPersonImg} className="w-6" alt="" />
+              <img src={selectedPersonImg} className="w-6" alt="" />
             </div>
-            <div className="w-1/3 flex items-center justify-center">{selectedPersonName}</div>
+            <div className="w-1/3 flex items-center justify-center">
+              {selectedPersonName}
+            </div>
           </div>
           <div className="relative mt-4">
             <label
@@ -173,13 +227,13 @@ export default function Market() {
           <div className="w-full py-2 text-color4 text-sm  flex items-center justify-between border-b  border-gray-600">
             <div>موجودی(تومان)</div>
             <div>
-             {new Intl.NumberFormat("fa-IR").format(selectedPersonPrice)} 
+              {new Intl.NumberFormat("fa-IR").format(selectedPersonPrice)}
             </div>
           </div>
           <div className="w-full  h-10 mt-1">
-              <span className="w-full h-10 bg-green-600 rounded-md flex items-center justify-center text-white hover:border-2 cursor-pointer hover:border-green-600 hover:bg-white hover:text-green-600" >
-                خرید
-              </span>
+            <span className="w-full h-10 bg-green-600 rounded-md flex items-center justify-center text-white hover:border-2 cursor-pointer hover:border-green-600 hover:bg-white hover:text-green-600">
+              خرید
+            </span>
           </div>
         </div>
         <div
@@ -188,11 +242,13 @@ export default function Market() {
           }`}
         >
           <div className="w-full py-2 text-color4 text-lg font-semibold flex items-center justify-between border-b border-gray-600">
-          <div className="w-1/3 flex items-center justify-center">فروش</div>
+            <div className="w-1/3 flex items-center justify-center">فروش</div>
             <div className="w-1/3 flex items-center justify-center">
-                <img src={selectedPersonImg} className="w-6" alt="" />
+              <img src={selectedPersonImg} className="w-6" alt="" />
             </div>
-            <div className="w-1/3 flex items-center justify-center">{selectedPersonName}</div>
+            <div className="w-1/3 flex items-center justify-center">
+              {selectedPersonName}
+            </div>
           </div>
           <div className="relative mt-4">
             <label
@@ -227,13 +283,13 @@ export default function Market() {
           <div className="w-full py-2 text-color4 text-sm  flex items-center justify-between border-b  border-gray-600">
             <div>موجودی(تومان)</div>
             <div>
-             {new Intl.NumberFormat("fa-IR").format(selectedPersonPrice)} 
+              {new Intl.NumberFormat("fa-IR").format(selectedPersonPrice)}
             </div>
           </div>
           <div className="w-full  h-10 mt-1">
-              <span className="w-full h-10 bg-red-600 rounded-md flex items-center justify-center text-white hover:border-2 cursor-pointer hover:border-red-600 hover:bg-white hover:text-red-600" >
-                فروش
-              </span>
+            <span className="w-full h-10 bg-red-600 rounded-md flex items-center justify-center text-white hover:border-2 cursor-pointer hover:border-red-600 hover:bg-white hover:text-red-600">
+              فروش
+            </span>
           </div>
         </div>
       </div>

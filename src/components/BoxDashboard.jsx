@@ -92,15 +92,15 @@ export default function BoxDashboard() {
                 {people.map((person) => (
                   <tr key={person.id}>
                     <td className="whitespace-nowrap flex items-center justify-center py-2 text-center   text-sm text-gray-500">
-                      <div className="flex items-center">
-                        <div className="h-11 w-11 flex-shrink-0">
+                      <div className="flex w-12 flex-col justify-center items-center">
+                        <div className="flex items-center justify-center h-11 w-11 flex-shrink-0">
                           <img
-                            className="h-11 w-11 rounded-full"
+                            className="h-8 w-8 rounded-full"
                             src={person.image}
                             alt=""
                           />
                         </div>
-                        <div className="mr-4">
+                        <div className="">
                           <div className="font-medium text-gray-900">
                             {person.name}
                           </div>
@@ -118,24 +118,24 @@ export default function BoxDashboard() {
                     </td>
                     <td className="whitespace-nowrap  text-center  text-sm text-gray-500">
                       <Link to="/SellAndBuy">
-                        <span className="inline-flex items-center cursor-pointer rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                        <span className="inline-flex items-center cursor-pointer rounded-md bg-green-500 px-2 py-1 text-xs font-medium text-green-100 ring-1 ring-inset ring-green-600/20">
                           خرید
                         </span>
                       </Link>
                       <Link to="/SellAndBuy">
-                        <span className="inline-flex mr-1 cursor-pointer items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                        <span className="inline-flex mr-1 cursor-pointer items-center rounded-md bg-red-500 px-2 py-1 text-xs font-medium text-green-100 ring-1 ring-inset ring-green-600/20">
                           فروش
                         </span>
                       </Link>
                     </td>
                     <td className="whitespace-nowrap  px-3  text-center py-5 text-sm text-gray-500">
                       <Link to="/deposit">
-                        <span className="inline-flex items-center cursor-pointer rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                        <span className="inline-flex items-center cursor-pointer rounded-md bg-blue-500 px-2 py-1 text-xs font-medium text-green-100 ring-1 ring-inset ring-green-600/20">
                           واریز
                         </span>
                       </Link>
                       <Link to="/deposit">
-                        <span className="inline-flex mr-1 cursor-pointer items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                        <span className="inline-flex mr-1 cursor-pointer items-center rounded-md bg-red-500 px-2 py-1 text-xs font-medium text-green-100 ring-1 ring-inset ring-green-600/20">
                           برداشت
                         </span>
                       </Link>

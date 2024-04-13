@@ -21,7 +21,7 @@ export default function Dashboard() {
           <BoxDashboard />
        </div>
       <div className="mt-10">
-        <h3 className="text-color4 font-semibold text-lg py-2">سفارشات باز</h3>
+        <h3 className="text-color4 font-semibold text-lg py-2">سفارشات </h3>
           <BoxDashboardOrder />
        </div>
     </>

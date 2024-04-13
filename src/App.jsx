@@ -330,7 +330,7 @@ function App() {
                           />
                         </div>
                         <div className="text-color3 text-sm md:text-[16px]">
-                          یزید ابن معاویه
+                            حیدر شجاع
                         </div>
                       </div>
                     </div>
