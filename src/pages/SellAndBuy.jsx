@@ -63,14 +63,14 @@ export default function SellAndBuy() {
           <img src="/img/green.svg" alt="" />
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-1 mt-10">
+      <div className="flex flex-col lg:flex-row items-start justify-center gap-1 mt-10">
         <div className="w-full lg:w-4/6">
           <div className="w-full flex items-center justify-between">
             <div>نوع معامله :</div>
             <div className="bg-[#dde9eb] rounded-sm p-2 flex gap-3 border-1 border-[#d5e1e3]">
               <span
                 className={`border cursor-pointer border-gray-400 py-0.5 px-3 lg:px-10 rounded-md ${
-                  isBuySelected ? "bg-green-500" : ""
+                  isBuySelected ? "bg-green-500 text-white" : ""
                 }`}
                 onClick={handleBuyClick}
               >
@@ -78,7 +78,7 @@ export default function SellAndBuy() {
               </span>
               <span
                 className={`border cursor-pointer border-gray-400 py-0.5 px-3 lg:px-10 rounded-md ${
-                  !isBuySelected ? "bg-green-500" : ""
+                  !isBuySelected ? "bg-red-500 text-white" : ""
                 }`}
                 onClick={handleSellClick}
               >
@@ -364,11 +364,11 @@ export default function SellAndBuy() {
           </div>
         </div>
         <div className="flex w-full lg:w-2/6 border border-green-700 rounded-lg flex-col p-2">
-            <div className="w-full h-16 bg-green-700 rounded-t-lg flex items-center justify-center gap-2">
+            <div className={`w-full h-16 rounded-t-lg flex items-center justify-center gap-2 ${isBuy =="فروش" ? 'bg-red-700' : 'bg-green-700'}`}>
                  <img src="/img/Buy.svg" alt="" />
                  <span className="text-xl font-semibold text-white">{isBuy} ارز</span>
             </div>
-            <div className="w-full h-16 bg-green-300 flex flex-col items-center justify-center gap-1">
+            <div className={`w-full h-16  flex flex-col items-center justify-center gap-1  ${isBuy =="فروش" ? 'bg-red-300' : 'bg-green-300'}`}>
                 <div className="text-sm text-color4">ارز درخواستی</div>
                 <div className="flex items-center gap-3">
                     <img src={selected.avatar} alt="1"  className="w-6"/> 
@@ -382,6 +382,7 @@ export default function SellAndBuy() {
             تومان
             </span>
             </div>
+            <div className={`w-full h-16 text-white cursor-pointer rounded-b-lg flex items-center justify-center gap-2 ${isBuy =="فروش" ? 'bg-red-700' : 'bg-green-700'}`}> ثبت در خواست {isBuy}</div>
         </div>
       </div>
     </>

@@ -170,20 +170,30 @@ export default function BoxDashboard() {
               </span>
             </div>
             <div className="w-full flex items-center justify-between border-t py-2">
-              <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                خرید
-              </span>
-              <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                فروش
-              </span>
+              <Link to="/SellAndBuy">
+                <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                  خرید
+                </span>
+              </Link>
+              <Link to="/SellAndBuy">
+                <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                  فروش
+                </span>
+              </Link>
             </div>
             <div className="w-full flex items-center justify-between border-t py-2">
+              <Link to="/deposit">
               <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                 واریز
               </span>
+
+              </Link>
+              <Link to="/deposit">
+
               <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                 برداشت
               </span>
+              </Link>
             </div>
           </div>
         ))}

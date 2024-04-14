@@ -68,13 +68,20 @@ export default function Market() {
 
   return (
     <>
-      <div className="w-full flex flex-col md:flex-row gap-2 items-center justify-between p-4 border border-gray-500 bg-white rounded-lg shadow-xl overflow-hidden">
-        <div className="flex items-center gap-3">
-          <span className="text-color3 font-bold">بازارها :</span>
-          <span className="text-[#FDCB44]">لیست ارزها </span>
-        </div>
-        <div className="flex items-center gap-3"></div>
-      </div>
+      
+      <div className="w-full flex flex-col md:flex-row gap-2 items-center justify-between p-4 border border-gray-500 bg-white rounded-lg shadow-xl">
+           <div className="flex items-center gap-3">
+             <span className="text-color3 font-bold">بازارها  :</span>
+             <span className="text-[#FDCB44]"> لیست ارزها</span>
+           </div>
+           <div className="flex items-center gap-3">
+             <span className="text-color3 font-bold"> میزان حد اعتباری شما :</span>
+             <span className="text-[#FDCB44]">
+             {new Intl.NumberFormat('fa-IR').format(1000000000)}
+             </span>
+             <span className="text-color3">تومان</span>
+           </div>
+       </div>
       <div className="border border-gray-500 bg-white rounded-lg shadow-xl mt-10 overflow-hidden">
         <div className="mt-8 md:flow-root">
           <div className="md:-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -161,7 +168,7 @@ export default function Market() {
                               person.image
                             )
                           }
-                          className={`inline-flex items-center rounded-md px-3 py-1 text-xs font-medium ${
+                          className={`cursor-pointer inline-flex items-center rounded-md px-3 py-1 text-xs font-medium ${
                             person.price[person.price.length - 1] >
                             person.price[person.price.length - 2]
                               ? "bg-green-50 text-green-500"

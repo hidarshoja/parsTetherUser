@@ -200,15 +200,25 @@ export default function BoxDeposit() {
                 </span>
               </div>
               <div className="w-full flex items-center justify-between border-t py-2">
-                <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                <span
+                 onClick={() =>
+                  handleTransactionClick(person.name, person.price)
+                }
+                className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                   واریز
                 </span>
-                <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                <span
+                 onClick={() =>
+                  handleHarvestClick(person.name, person.price)
+                }
+                className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                   برداشت
                 </span>
               </div>
               <div className="w-full flex items-center justify-between border-t py-2">
-                <span className="w-full inline-flex items-center justify-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                <span 
+                onClick={() => handleNavigateToDetails(person.name)}
+                className="w-full inline-flex items-center justify-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                   جزییات
                 </span>
               </div>
