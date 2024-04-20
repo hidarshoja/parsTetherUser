@@ -175,7 +175,7 @@ function App() {
         )}
 
         {location.pathname !== "/Login" && (
-          <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+          <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col border-l border-gray-300">
             <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-color1  pb-4">
               <div className="w-full  flex flex-col h-20  items-center mt-3 justify-center">
                 <img
@@ -294,7 +294,7 @@ function App() {
         )}
         <div className="lg:pr-72">
           {location.pathname !== "/Login" && (
-            <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 bg-color1 px-4 sm:gap-x-6 sm:px-6 lg:px-8">
+            <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 bg-color1 px-4 sm:gap-x-6 sm:px-6 lg:px-8 border-b border-gray-300">
               <button
                 type="button"
                 className="-m-2.5 p-2.5 text-gray-900 lg:hidden"
@@ -367,7 +367,7 @@ function App() {
           <div>
             <main>
               <div className="px-2 lg:pl-4 lg:pr-4">
-                <div className="w-full min-h-[500px] border  border-gray-500 bg-gray-100 rounded-2xl p-3">
+                <div className="w-full min-h-[500px] border mt-3 border-gray-500 bg-gray-100 rounded-2xl p-3">
                   <Outlet />
                 </div>
               </div>

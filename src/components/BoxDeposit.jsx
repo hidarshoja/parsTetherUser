@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate , useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 export default function BoxDeposit() {
   const [showSecondDiv, setShowSecondDiv] = useState(false);
   const [showHarvestDiv, setShowHarvestDiv] = useState(false);
@@ -181,7 +181,7 @@ export default function BoxDeposit() {
           {people.map((person) => (
             <div
               key={person.id}
-              className="w-[290px]  h-auto border flex flex-col items-center justify-between  border-gray-500 bg-color4 text-white p-2 rounded-lg shadow-xl"
+              className="w-full sm:w-[290px]  h-auto border flex flex-col items-center justify-between  border-gray-500 bg-color4 text-white p-2 rounded-lg shadow-xl"
             >
               <div className="w-full flex items-center justify-between bg-color5 py-2 px-1">
                 <span>
